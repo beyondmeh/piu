@@ -13,7 +13,7 @@ useful in status bars such as [i3bar](https://i3wm.org/i3bar/),
 [lemonbar](https://github.com/LemonBoy/bar), or even [Conky](https://github.com/brndnmtthws/conky).
 
 
-## Currently Supported
+### Currently Supported
 * [Arch Linux](https://www.archlinux.org/)
 * [Void Linux](http://www.voidlinux.eu/)
 
@@ -39,9 +39,9 @@ Add the following to `/etc/sudoers`, depending on your distribution:
 %wheel ALL=(ALL) NOPASSWD:  xbps-install -S
 ```
 
-**NOTE**: updating the package cache does not install or update any 
-programs. It is relatively innocuous and safe to perform automatically 
-without password; most package managers need additional permissions 
+**NOTE**: updating the package cache is relatively innocuous and safe to 
+perform automatically without password; it does not install, update, or 
+replace any programs. Most package managers need additional permissions 
 simply because the cache is usually in `/var`, where most users don't 
 have write permission.
 
