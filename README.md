@@ -31,12 +31,12 @@ Add the following to `/etc/sudoers`, depending on your distribution:
 
 ### pacman (Arch Linux)
 ```console
-%wheel ALL=(ALL) NOPASSWD: pacman -Sy
+%wheel ALL=(ALL) NOPASSWD: /usr/bin/pacman -Sy
 ```
 
 ### xbps (Void Linux)
 ```console
-%wheel ALL=(ALL) NOPASSWD:  xbps-install -S
+%wheel ALL=(ALL) NOPASSWD: /usr/bin/xbps-install -S
 ```
 
 **NOTE**: updating the package cache is relatively innocuous and safe to 
