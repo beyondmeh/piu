@@ -63,9 +63,10 @@ You should support Warner Bros. if you like their works.
 
 
 ## Feedback
-I would love your feedback! If you found any of these scripts useful, please
-drop me [an email](mailto:timothykeith@gmail.com). For the privacy conscious,
-feel free to encrypt any messages using my [PGP key](http://pgp.mit.edu/pks/lookup?op=vindex&fingerprint=on&search=0xF4F4A135C022EE12):
+I would love your feedback! If you use `piuw` in your status bar send me
+[an email](mailto:timothykeith@gmail.com) with a screenshot. For the 
+privacy conscious, feel free to encrypt any messages using my 
+[PGP key](http://pgp.mit.edu/pks/lookup?op=vindex&fingerprint=on&search=0xF4F4A135C022EE12):
 
 > 4135 C593 1D89 368E 7F32 C8ED F4F4 A135 C022 EE12
 
