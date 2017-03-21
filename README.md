@@ -1,6 +1,6 @@
 # piuw (Platform Independant Updates Warner)
 
-<img align="right" alt="Skunk Logo" src="https://raw.githubusercontent.com/keithieopia/piu/master/.readme-assets/skunk-logo.png">
+<img align="right" alt="Skunk Logo" src="https://raw.githubusercontent.com/keithieopia/piuw/master/.readme-assets/skunk-logo.png">
 
 > Making the simple complicated is commonplace; making the complicated 
 > simple, awesomely simple, that's creativity. 
