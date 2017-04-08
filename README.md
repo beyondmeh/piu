@@ -9,12 +9,20 @@ born out of frustration over constantly typing the wrong command or
 passing the wrong flags when on different Linux distros.
 
 ### Features
-* Auto-update package repositories if they're old; without needing to 
-  specifically pass a flag
-* Auto-sudo when needed; no more `sudo !!` or unnecessarily typing sudo 
-  out of habit just to search for a package
-* List number of updates suitable for status bars or shell scripts; 
-  without the need for parsing
+* `piu` works the same across distros, no more memorising each package 
+  manager and its quirks
+* Auto-update package repositories if they're old when installing or 
+  upgrading the system (no need for additional flags).
+* `sudo` automatically if additional permissions are needed. No more: 
+```
+E: Could not open lock file /var/lib/dpkg/lock - open (13: Permission denied)
+E: Unable to lock the administration directory (/var/lib/dpkg/), are you root?
+```
+* Includes a built-in option to install locally downloaded packages, 
+  even when the standard package manager doesn't support that; such as 
+  `dpkg` vs. `apt`
+* Print the number of updates available, suitable for use in a status 
+  bar or shell scripts
 
 ### Less Typing
 Typing `piu` is fast! It uses one hand on a standard QWERTY keyboard and 
@@ -31,9 +39,10 @@ managers:
   * Arch Linux: `pacman -S foo` *31% reduction*
   * Void Linux: `xbps-install -S foo` *53% reduction*
 
-`piu` also automatically calls `sudo` if it needs more permissions, 
-which none of the do. If you install from a standard user account, like 
-most people, you'll see an even greater reduction using `piu`.
+If `piu` needs more permissions, it will automatically call `sudo`.
+Since package managers typically don't do this, you'll see an even 
+greater reduction if you use a standard user account for installation 
+and not root.
 
 
 ### Currently Supported
