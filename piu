@@ -210,8 +210,7 @@ case "$action" in
 		eval ${PKGMAN}_num_pkgs
 		;;
 		
-	c | cache) 
-		# (force update of cache)
+	c | cache)
 		eval ${PKGMAN}_repo_update
 		;;
 		
