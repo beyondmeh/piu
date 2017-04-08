@@ -1,33 +1,62 @@
-# piuw (Platform Independant Updates Warner)
+# piu (Platform Independant Updater)
 
 <img align="right" alt="Skunk Logo" src="https://raw.githubusercontent.com/keithieopia/piuw/master/.readme-assets/skunk-logo.png">
 
-> Making the simple complicated is commonplace; making the complicated 
-> simple, awesomely simple, that's creativity. 
->
-> &mdash; Charles Mingus 
+> Making cross-platform package management stink less
 
-`piuw` will sync the package manager's cache and displays the number of 
-updates across different Linux distributions. This makes it particularly 
-useful in status bars such as [i3bar](https://i3wm.org/i3bar/), 
-[lemonbar](https://github.com/LemonBoy/bar), or even [Conky](https://github.com/brndnmtthws/conky).
+`piu` is a all-in-one wrapper for different package managers. It was 
+born out of frustration over constantly typing the wrong command or 
+passing the wrong flags when on different Linux distros.
+
+### Features
+* Auto-update package repositories if they're old; without needing to 
+  specifically pass a flag
+* Auto-sudo when needed; no more `sudo !!` or unnecessarily typing sudo 
+  out of habit just to search for a package
+* List number of updates suitable for status bars or shell scripts; 
+  without the need for parsing
+
+### Less Typing
+Typing `piu` is fast! It uses one hand on a standard QWERTY keyboard and 
+all the letters are all on the same row. Let's compare other package 
+managers:
+
+* Update installed packages: `piu u`
+  * Debian & Ubuntu: `apt update && apt upgrade` *80% reduction*  
+  * Arch Linux: `pacman -Syu` *55% reduction*
+  * Void Linux: `xbps-install -Su` *69% reduction*
+
+* Install a package: `piu i foo`
+  * Debian & Ubuntu: `apt install foo` *40% reduction*  
+  * Arch Linux: `pacman -S foo` *31% reduction*
+  * Void Linux: `xbps-install -S foo` *53% reduction*
+
+`piu` also automatically calls `sudo` if it needs more permissions, 
+which none of the do. If you install from a standard user account, like 
+most people, you'll see an even greater reduction using `piu`.
 
 
 ### Currently Supported
-* [Arch Linux](https://www.archlinux.org/)
+* [Arch Linux](https://www.archlinux.org/)-based: [Manjaro](https://manjaro.org/)
+* [Debian](https://www.debian.org/)-based: [Ubuntu](https://www.ubuntu.com/), [Linux Mint](https://www.linuxmint.com/), [elementary OS](https://elementary.io/), [SteamOS](http://store.steampowered.com/steamos/)
 * [Void Linux](http://www.voidlinux.eu/)
 
 
 ## Installation
-While not required, if you will be using `piuw` in a status bar script 
+While not required, if you will be using `piu` in a status bar script 
 you should setup `sudo` to allow the package manager to sync its cache 
 without prompting for a password. 
 
-This will allow `piuw` to automatically refresh the package manager's 
-cache periodically. Otherwise, `piuw` will simply state the cache is 
+This will allow `piu` to automatically refresh the package manager's 
+cache periodically. Otherwise, `piu` will simply state the cache is 
 out-of-date.
 
 Add the following to `/etc/sudoers`, depending on your distribution:
+
+### apt (Debian & Ubuntu)
+```console
+%wheel ALL=(ALL) NOPASSWD: /usr/bin/apt update
+```
 
 ### pacman (Arch Linux)
 ```console

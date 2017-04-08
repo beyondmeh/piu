@@ -1,0 +1,225 @@
+#!/bin/bash
+
+UPDATE_AFTER=43200 # 12 hours
+
+usage() {
+cat <<HELP
+Cross-platform package manager wrapper
+
+usage: $(basename "$0") OPTION [PACKAGE]
+  
+   SINGLE PACKAGE ACTIONS
+   (i)nstall : install a given package   
+   (r)emove  : remove a given package
+   (p)urge   : remove a given package and any related config files
+   (s)earch  : search for a package
+   (m)anual  : install a locally downloaded package (e.g.: a .deb file)
+   
+   UPDATING
+   (u)pdate  : update all installed packages
+   (c)ache   : update the package cache / repository
+      
+               NOTE: update, install, and num-updates will automatically 
+               update the cache if it is old
+   
+   MISC
+   (l)ist            : list installed packages
+   (nu) num-updates  : number of packages with updates 
+   (np) num-packages : number of installed packages
+   
+
+https://github.com/keithieopia/piu
+
+Copyright (c) 2017 Timothy Keith
+Licensed under the MIT license.
+HELP
+}
+
+
+# Distro Specific
+########################################################################
+
+#
+# Arch Linux
+#
+
+pacman_list()    { pacman -Ql; }
+pacman_install() { sudo pacman -S "$@"; }
+pacman_update()  { sudo pacman -Sy; }
+pacman_remove()  { sudo pacman -Rs "$@"; }
+pacman_purge()   { sudo pacman -Rns "$@"; }
+pacman_search()  { pacman -Ss "$@"; }
+pacman_manual()  { sudo pacman -U "$@"; }
+
+pacman_repo_age() {
+	LOG_DATE=$(grep 'synchronizing package lists' /var/log/pacman.log | \
+               tail -1 | awk '{print $1" "$2}' | tr -d \[\])
+	date -d "$LOG_DATE" +%s
+}
+
+pacman_repo_update() {
+	if ! sudo -n pacman -Sy &> /dev/null; then
+		echo "out-of-date"
+		exit 1
+	fi
+}
+
+pacman_num_updates() {
+	pacman -Qu | wc -l
+}
+
+pacman_num_pkgs() {
+	pacman_list | wc -l
+}
+
+#
+# Void Linux
+#
+
+xbps_install() { echo "not implemented yet!" && exit 1; }
+xbps_update()  { echo "not implemented yet!" && exit 1; }
+xbps_remove()  { echo "not implemented yet!" && exit 1; }
+xbps_purge()   { echo "not implemented yet!" && exit 1; }
+xbps_search()  { echo "not implemented yet!" && exit 1; }
+xbps_list()    { echo "not implemented yet!" && exit 1; }
+xbps_manual()  { echo "not implemented yet!" && exit 1; }
+
+xbps_repo_age() {
+	stat -c '%Y' '/var/db/xbps/https___repo_voidlinux_eu_current'
+}
+
+xbps_repo_update() {
+	if ! sudo -n xbps-install -S &> /dev/null; then
+		echo "out-of-date"
+		exit 1
+	fi
+}
+
+xbps_num_updates() {
+	xbps-install -nu | wc -l
+}
+
+xbps_num_pkgs() {
+	echo "not implemented yet!" && exit 1
+}
+
+#
+# Debian / Ubuntu
+#
+
+apt_install() { sudo apt install "$@"; }
+apt_update()  { sudo apt upgrade; }
+apt_remove()  { sudo apt remove "$@"; }
+apt_purge()   { sudo apt purge "$@"; }
+apt_search()  { apt search "$@"; }
+apt_list()    { dpkg-query -f '${binary:Package}\n' -W; }
+apt_manual()  { sudo dpkg -i "$@"; }
+
+apt_repo_age() {
+	stat -c '%Y' '/var/cache/apt/pkgcache.bin'
+}
+
+apt_repo_update() {
+	if ! sudo -n apt update &> /dev/null; then
+		echo 'out-of-date'
+		exit 1
+	fi
+}
+
+apt_num_updates() {
+	apt list --upgradeable 2>/dev/null | tail -n +2 | wc -l
+}
+
+apt_num_pkgs() {
+	apt_list | wc -l
+}
+
+
+# Abstraction
+########################################################################
+
+repo_update_if_needed() {
+	CURRENT_TIME=$(date '+%s')
+	LAST_UPDATE=$(eval "${PKGMAN}"_repo_age)
+
+	if ((CURRENT_TIME-LAST_UPDATE > UPDATE_AFTER)); then
+		eval "${PKGMAN}"_repo_update
+	fi
+}
+
+# Find the current distribution
+if [ -f /etc/os-release ]; then
+	if grep -q arch /etc/os-release; then
+		PKGMAN='pacman'
+	elif grep -q debian /etc/os-release; then
+		PKGMAN='apt'
+	elif grep -q void /etc/os-release; then
+		PKGMAN='xbps'
+	else
+		echo "ERROR: I currently don't have support for your distro"
+		exit 1
+	fi
+else
+	echo "ERROR: /etc/os-release does not exist, so I can't tell which distro you're using!"
+	exit 1
+fi
+
+
+# find what we're doing
+########################################################################
+
+# make leading dashes optional, out of tradition
+action=$(echo "$1" | sed 's/^-*//g' --)
+
+case "$action" in
+	s | search)
+		shift 1
+		eval ${PKGMAN}_search "$@"
+		;;
+		
+	r | remove)
+		shift 1
+		eval ${PKGMAN}_remove "$@"
+		;;
+		
+	p | purge)
+		shift 1
+		eval ${PKGMAN}_purge "$@"
+		;;
+	
+	l | list)
+		eval ${PKGMAN}_list
+		;;
+	
+	i | install)
+		shift 1
+		repo_update_if_needed
+		eval ${PKGMAN}_install "$@"
+		;;
+		
+	u | update)
+		repo_update_if_needed
+		eval ${PKGMAN}_update
+		;;
+		
+	nu | num-updates) 
+		eval ${PKGMAN}_num_updates
+		;;
+		
+	np | num-packages)
+		eval ${PKGMAN}_num_pkgs
+		;;
+		
+	c | cache) 
+		# (force update of cache)
+		eval ${PKGMAN}_repo_update
+		;;
+		
+	m | manual)
+		eval ${PKGMAN}_manual
+		;;
+	
+	*)
+		usage
+		;;
+esac
