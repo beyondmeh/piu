@@ -1,6 +1,6 @@
 # piu (Platform Independant Updater)
 
-<img align="right" alt="Skunk Logo" src="https://raw.githubusercontent.com/keithieopia/piuw/master/.readme-assets/skunk-logo.png">
+<img align="right" alt="Skunk Logo" src="https://raw.githubusercontent.com/keithieopia/piu/master/.readme-assets/logo/skunk-logo.png">
 
 > Making cross-platform package management stink less
 
@@ -84,24 +84,18 @@ simply because the cache is usually in `/var`, where most users don't
 have write permission.
 
 
-## Project Icon
-This project's icon is *"Pepé Le Pew"*, originally created by Chuck 
-Jones and featured in several  Warner Bros. series like [Looney Toons](https://en.wikipedia.org/wiki/Looney_Tunes) 
-and [Merrie Melodies](https://en.wikipedia.org/wiki/Merrie_Melodies).
-episodes. 
-
-I cropped, stylized, and optimized the logo for the web using 
+## Project Logo
+The project's skunk logo was drawn by the very talented Kelly. It has 
+been digitized, cropped, and optimized for the web using 
 [GIMP](https://www.gimp.org/) and [OptiPNG](http://optipng.sourceforge.net/). 
-The logo can be located in the `.readme-assets` folder, if I have any 
-rights to it, I hereby wave them and dedicate them into the public 
-domain. Warner Bros. Entertainment Inc. retains the rights to the 
-*Pepé Le Pew* character.
 
-You should support Warner Bros. if you like their works.
+All the versions of the the logo, including the original drawing, are 
+located in the `.readme-assets/logo` folder. All versions of the skunk logo 
+are licensed under a [Creative Commons Attribution-ShareAlike 4.0 International License](https://creativecommons.org/licenses/by-sa/4.0/).
 
 
 ## Feedback
-I would love your feedback! If you use `piuw` in your status bar send me
+I would love your feedback! If you use `piu` in your status bar send me
 [an email](mailto:timothykeith@gmail.com) with a screenshot. For the 
 privacy conscious, feel free to encrypt any messages using my 
 [PGP key](http://pgp.mit.edu/pks/lookup?op=vindex&fingerprint=on&search=0xF4F4A135C022EE12):
