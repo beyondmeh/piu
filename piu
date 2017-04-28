@@ -43,7 +43,7 @@ HELP
 # Arch Linux
 #
 
-pacman_list()    { pacman -Ql; }
+pacman_list()    { pacman -Qqe; }
 pacman_install() { sudo pacman -S "$@"; }
 pacman_update()  { sudo pacman -Sy; }
 pacman_remove()  { sudo pacman -Rs "$@"; }
