@@ -58,16 +58,17 @@ and not root.
 
 ![Alpine Linux](https://raw.githubusercontent.com/keithieopia/piu/master/.readme-assets/brands/alpine.png "Alpine Linux")
 ![Arch Linux](https://raw.githubusercontent.com/keithieopia/piu/master/.readme-assets/brands/arch.png "Arch Linux")
-![Debian](https://raw.githubusercontent.com/keithieopia/piu/master/.readme-assets/brands/debian.png "Debian")
-![Elementary OS](https://raw.githubusercontent.com/keithieopia/piu/master/.readme-assets/brands/elementary.png "Elementary OS")
 ![Linux Mint](https://raw.githubusercontent.com/keithieopia/piu/master/.readme-assets/brands/mint.png "Linux Mint")
-![Manjaro](https://raw.githubusercontent.com/keithieopia/piu/master/.readme-assets/brands/manjaro.png "Manjaro")
 ![Ubuntu](https://raw.githubusercontent.com/keithieopia/piu/master/.readme-assets/brands/ubuntu.png "Ubuntu")
+&nbsp;  
+![Elementary OS](https://raw.githubusercontent.com/keithieopia/piu/master/.readme-assets/brands/elementary.png "Elementary OS")
+![Debian](https://raw.githubusercontent.com/keithieopia/piu/master/.readme-assets/brands/debian.png "Debian")
+![Manjaro](https://raw.githubusercontent.com/keithieopia/piu/master/.readme-assets/brands/manjaro.png "Manjaro")
 ![Void Linux](https://raw.githubusercontent.com/keithieopia/piu/master/.readme-assets/brands/void.png "Void Linux")
   
+
 &nbsp;  
-&nbsp;  
-:grey_exclamation: *above brands, logos, and trademarks are property of 
+> :grey_exclamation: *above brands, logos, and trademarks are property of 
 their respective owners.*
 
 ## Installation
