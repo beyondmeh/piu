@@ -31,11 +31,13 @@ managers:
 
 * Update installed packages: `piu u`
   * Debian & Ubuntu: `apt update && apt upgrade` *80% reduction*  
+  * Alpine Linux: `apk update && apk upgrade` *80% reduction*
   * Arch Linux: `pacman -Syu` *55% reduction*
   * Void Linux: `xbps-install -Su` *69% reduction*
 
 * Install a package: `piu i foo`
   * Debian & Ubuntu: `apt install foo` *40% reduction*  
+  * Alpine Linux: `apk add foo` *18% reduction*
   * Arch Linux: `pacman -S foo` *31% reduction*
   * Void Linux: `xbps-install -S foo` *53% reduction*
 
@@ -46,12 +48,43 @@ and not root.
 
 
 ### Currently Supported
-* [Arch Linux](https://www.archlinux.org/)-based: [Manjaro](https://manjaro.org/)
-* [Debian](https://www.debian.org/)-based: [Ubuntu](https://www.ubuntu.com/), [Linux Mint](https://www.linuxmint.com/), [elementary OS](https://elementary.io/), [SteamOS](http://store.steampowered.com/steamos/)
+
+* [Alpine Linux](https://alpinelinux.org/)
+* [Arch Linux](https://www.archlinux.org/)-likes: [Manjaro](https://manjaro.org/)
+* [Debian](https://www.debian.org/)-likes: [Ubuntu](https://www.ubuntu.com/), [Linux Mint](https://www.linuxmint.com/), [elementary OS](https://elementary.io/), [SteamOS](http://store.steampowered.com/steamos/)
 * [Void Linux](http://www.voidlinux.eu/)
 
+---
+
+![Alpine Linux](https://raw.githubusercontent.com/keithieopia/piu/master/.readme-assets/brands/alpine.png "Alpine Linux")
+![Arch Linux](https://raw.githubusercontent.com/keithieopia/piu/master/.readme-assets/brands/arch.png "Arch Linux")
+![Debian](https://raw.githubusercontent.com/keithieopia/piu/master/.readme-assets/brands/debian.png "Debian")
+![Elementary OS](https://raw.githubusercontent.com/keithieopia/piu/master/.readme-assets/brands/elementary.png "Elementary OS")
+![Linux Mint](https://raw.githubusercontent.com/keithieopia/piu/master/.readme-assets/brands/mint.png "Linux Mint")
+![Manjaro](https://raw.githubusercontent.com/keithieopia/piu/master/.readme-assets/brands/manjaro.png "Manjaro")
+![Ubuntu](https://raw.githubusercontent.com/keithieopia/piu/master/.readme-assets/brands/ubuntu.png "Ubuntu")
+![Void Linux](https://raw.githubusercontent.com/keithieopia/piu/master/.readme-assets/brands/void.png "Void Linux")
+  
+&nbsp;  
+&nbsp;  
+:grey_exclamation: *above brands, logos, and trademarks are property of 
+their respective owners.*
 
 ## Installation
+
+```console```
+$ curl -o https://raw.githubusercontent.com/keithieopia/piu/master/piu && sudo mv piu /usr/local/bin && sudo chmod +x /usr/local/bin/piu
+```
+Alternatively, if you have something like `~/bin` setup, just download
+`piu` there. 
+
+### Uninstall
+```console```
+$ sudo rm /usr/local/bin/piu
+```
+
+
+### Optional `sudo` Setup
 While not required, if you will be using `piu` in a status bar script 
 you should setup `sudo` to allow the package manager to sync its cache 
 without prompting for a password. 
@@ -62,17 +95,17 @@ out-of-date.
 
 Add the following to `/etc/sudoers`, depending on your distribution:
 
-### apt (Debian & Ubuntu)
+#### apt (Debian & Ubuntu)
 ```console
 %wheel ALL=(ALL) NOPASSWD: /usr/bin/apt update
 ```
 
-### pacman (Arch Linux)
+#### pacman (Arch Linux)
 ```console
 %wheel ALL=(ALL) NOPASSWD: /usr/bin/pacman -Sy
 ```
 
-### xbps (Void Linux)
+#### xbps (Void Linux)
 ```console
 %wheel ALL=(ALL) NOPASSWD: /usr/bin/xbps-install -S
 ```
