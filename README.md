@@ -29,15 +29,15 @@ E: Unable to lock the administration directory (/var/lib/dpkg/), are you root?
 
 ### Currently Supports
 
-> [Alpine Linux](https://alpinelinux.org/), 
-> [Arch Linux](https://www.archlinux.org/), 
-> [Debian](https://www.debian.org/), 
-> [elementary OS](https://elementary.io/), 
-> [Manjaro](https://manjaro.org/), 
-> [Linux Mint](https://www.linuxmint.com/), 
-> [SteamOS](http://store.steampowered.com/steamos/), 
-> [Ubuntu](https://www.ubuntu.com/), 
-> [Void Linux](http://www.voidlinux.eu/)
+> *[Alpine Linux](https://alpinelinux.org/),* 
+> *[Arch Linux](https://www.archlinux.org/),* 
+> *[Debian](https://www.debian.org/),* 
+> *[elementary OS](https://elementary.io/),* 
+> *[Manjaro](https://manjaro.org/),* 
+> *[Linux Mint](https://www.linuxmint.com/),* 
+> *[SteamOS](http://store.steampowered.com/steamos/),* 
+> *[Ubuntu](https://www.ubuntu.com/), and* 
+> *[Void Linux](http://www.voidlinux.eu/)*
 
 ![Alpine Linux](https://raw.githubusercontent.com/keithieopia/piu/master/.readme-assets/brands/alpine.png "Alpine Linux") &nbsp;
 ![Arch Linux](https://raw.githubusercontent.com/keithieopia/piu/master/.readme-assets/brands/arch.png "Arch Linux") &nbsp;
@@ -54,14 +54,14 @@ their respective owners.*
 
 ## Installation
 
-```console```
+```console
 $ curl -o https://raw.githubusercontent.com/keithieopia/piu/master/piu && sudo mv piu /usr/local/bin && sudo chmod +x /usr/local/bin/piu
 ```
 Alternatively, if you have something like `~/bin` setup, just download
 `piu` there. 
 
 ### Uninstall
-```console```
+```console
 $ sudo rm /usr/local/bin/piu
 ```
 
