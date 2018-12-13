@@ -30,7 +30,7 @@ usage: $(basename "$0") OPTION [PACKAGE]
 
 https://github.com/keithieopia/piu
 
-Copyright (c) 2017 Timothy Keith
+Copyright (c) 2017-2018 Timothy Keith
 Licensed under the MIT license.
 HELP
 }
