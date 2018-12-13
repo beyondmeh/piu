@@ -40,15 +40,46 @@ HELP
 ########################################################################
 
 #
+# Alpine Linux
+#
+
+apk_install() { sudo apk add "$@"; }
+apk_update()  { sudo apk upgrade; }
+apk_remove()  { sudo apk del "$@"; }
+apk_purge()   { sudo apk del "$@" && sudo apk cache clean; }
+apk_search()  { apk search -v "$@"; }
+apk_list()    { apk info; }
+apk_manual()  { sudo apk add --allow-untrusted "$@"; }
+
+apk_repo_age() {
+	find /var/cache/apk -type f -print0 | xargs -0 stat -c %Z | sort | tail -1
+}
+
+apk_repo_update() {
+	if ! sudo -n apk update &> /dev/null; then
+		echo "out-of-date"
+		exit 1
+	fi
+}
+
+apk_num_updates() {
+	echo "not implemented yet!" && exit 1;
+}
+
+apk_num_pkgs() {
+	apk list | wc -l
+}
+
+#
 # Arch Linux
 #
 
-pacman_list()    { pacman -Qqe; }
 pacman_install() { sudo pacman -S "$@"; }
 pacman_update()  { sudo pacman -Sy; }
 pacman_remove()  { sudo pacman -Rs "$@"; }
 pacman_purge()   { sudo pacman -Rns "$@"; }
 pacman_search()  { pacman -Ss "$@"; }
+pacman_list()    { pacman -Qqe; }
 pacman_manual()  { sudo pacman -U "$@"; }
 
 pacman_repo_age() {
@@ -76,10 +107,10 @@ pacman_num_pkgs() {
 # Void Linux
 #
 
-xbps_install() { xbps-install -S "$@"; }
-xbps_update()  { xbps-install -S; }
-xbps_remove()  { xbps-remove -R "$@"; }
-xbps_purge()   { xbps-remove -R "$@" && xbps-remove -Oo; }
+xbps_install() { sudo xbps-install -S "$@"; }
+xbps_update()  { sudo xbps-install -Su; }
+xbps_remove()  { sudo xbps-remove -R "$@"; }
+xbps_purge()   { sudo xbps-remove -R "$@" && sudo xbps-remove -Oo; }
 xbps_search()  { xbps-query -Rs "$@"; }
 xbps_list()    { xbps-query -l; }
 xbps_manual()  { echo "not implemented yet!" && exit 1; }
@@ -155,6 +186,8 @@ if [ -f /etc/os-release ]; then
 		PKGMAN='apt'
 	elif grep -q void /etc/os-release; then
 		PKGMAN='xbps'
+	elif grep -q alpine /etc/os-release; then
+		PKGMAN='apk'
 	else
 		echo "ERROR: I currently don't have support for your distro"
 		exit 1
