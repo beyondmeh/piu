@@ -76,12 +76,12 @@ pacman_num_pkgs() {
 # Void Linux
 #
 
-xbps_install() { echo "not implemented yet!" && exit 1; }
-xbps_update()  { echo "not implemented yet!" && exit 1; }
-xbps_remove()  { echo "not implemented yet!" && exit 1; }
-xbps_purge()   { echo "not implemented yet!" && exit 1; }
-xbps_search()  { echo "not implemented yet!" && exit 1; }
-xbps_list()    { echo "not implemented yet!" && exit 1; }
+xbps_install() { xbps-install -S "$@"; }
+xbps_update()  { xbps-install -S; }
+xbps_remove()  { xbps-remove -R "$@"; }
+xbps_purge()   { xbps-remove -R "$@" && xbps-remove -Oo; }
+xbps_search()  { xbps-query -Rs "$@"; }
+xbps_list()    { xbps-query -l; }
 xbps_manual()  { echo "not implemented yet!" && exit 1; }
 
 xbps_repo_age() {
