@@ -2,73 +2,54 @@
 
 <img align="right" alt="Skunk Logo" src="https://raw.githubusercontent.com/keithieopia/piu/master/.readme-assets/logo/skunk-logo.png">
 
-> Making cross-platform package management stink less
+**`piu` makes cross-platform package management stink less.**
 
-`piu` is a all-in-one wrapper for different package managers. It was 
+`piu` is an all-in-one wrapper for different package managers. It was 
 born out of frustration over constantly typing the wrong command or 
 passing the wrong flags when on different Linux distros.
+
 
 ### Features
 * `piu` works the same across distros, no more memorising each package 
   manager and its quirks
 * Auto-update package repositories if they're old when installing or 
   upgrading the system (no need for additional flags).
-* `sudo` automatically if additional permissions are needed. No more: 
-```
-E: Could not open lock file /var/lib/dpkg/lock - open (13: Permission denied)
-E: Unable to lock the administration directory (/var/lib/dpkg/), are you root?
-```
 * Includes a built-in option to install locally downloaded packages, 
   even when the standard package manager doesn't support that; such as 
   `dpkg` vs. `apt`
 * Print the number of updates available, suitable for use in a status 
   bar or shell scripts
-
-### Less Typing
-Typing `piu` is fast! It uses one hand on a standard QWERTY keyboard and 
-all the letters are all on the same row. Let's compare other package 
-managers:
-
-* Update installed packages: `piu u`
-  * Debian & Ubuntu: `apt update && apt upgrade` *80% reduction*  
-  * Alpine Linux: `apk update && apk upgrade` *80% reduction*
-  * Arch Linux: `pacman -Syu` *55% reduction*
-  * Void Linux: `xbps-install -Su` *69% reduction*
-
-* Install a package: `piu i foo`
-  * Debian & Ubuntu: `apt install foo` *40% reduction*  
-  * Alpine Linux: `apk add foo` *18% reduction*
-  * Arch Linux: `pacman -S foo` *31% reduction*
-  * Void Linux: `xbps-install -S foo` *53% reduction*
-
-If `piu` needs more permissions, it will automatically call `sudo`.
-Since package managers typically don't do this, you'll see an even 
-greater reduction if you use a standard user account for installation 
-and not root.
+* `sudo` automatically if additional permissions are needed. *No more...* 
+```
+E: Could not open lock file /var/lib/dpkg/lock - open (13: Permission denied)
+E: Unable to lock the administration directory (/var/lib/dpkg/), are you root?
+```
+* And most important: *less typing!* Compare `piu u` to `apt update && apt upgrade`
 
 
-### Currently Supported
+### Currently Supports
 
-* [Alpine Linux](https://alpinelinux.org/)
-* [Arch Linux](https://www.archlinux.org/)-likes: [Manjaro](https://manjaro.org/)
-* [Debian](https://www.debian.org/)-likes: [Ubuntu](https://www.ubuntu.com/), [Linux Mint](https://www.linuxmint.com/), [elementary OS](https://elementary.io/), [SteamOS](http://store.steampowered.com/steamos/)
-* [Void Linux](http://www.voidlinux.eu/)
+> [Alpine Linux](https://alpinelinux.org/), 
+> [Arch Linux](https://www.archlinux.org/), 
+> [Debian](https://www.debian.org/), 
+> [elementary OS](https://elementary.io/), 
+> [Manjaro](https://manjaro.org/), 
+> [Linux Mint](https://www.linuxmint.com/), 
+> [SteamOS](http://store.steampowered.com/steamos/), 
+> [Ubuntu](https://www.ubuntu.com/), 
+> [Void Linux](http://www.voidlinux.eu/)
 
----
-
-![Alpine Linux](https://raw.githubusercontent.com/keithieopia/piu/master/.readme-assets/brands/alpine.png "Alpine Linux")
-![Arch Linux](https://raw.githubusercontent.com/keithieopia/piu/master/.readme-assets/brands/arch.png "Arch Linux")
-![Linux Mint](https://raw.githubusercontent.com/keithieopia/piu/master/.readme-assets/brands/mint.png "Linux Mint")
+![Alpine Linux](https://raw.githubusercontent.com/keithieopia/piu/master/.readme-assets/brands/alpine.png "Alpine Linux") &nbsp;
+![Arch Linux](https://raw.githubusercontent.com/keithieopia/piu/master/.readme-assets/brands/arch.png "Arch Linux") &nbsp;
+![Linux Mint](https://raw.githubusercontent.com/keithieopia/piu/master/.readme-assets/brands/mint.png "Linux Mint") &nbsp;
 ![Ubuntu](https://raw.githubusercontent.com/keithieopia/piu/master/.readme-assets/brands/ubuntu.png "Ubuntu")
 &nbsp;  
-![Elementary OS](https://raw.githubusercontent.com/keithieopia/piu/master/.readme-assets/brands/elementary.png "Elementary OS")
-![Debian](https://raw.githubusercontent.com/keithieopia/piu/master/.readme-assets/brands/debian.png "Debian")
-![Manjaro](https://raw.githubusercontent.com/keithieopia/piu/master/.readme-assets/brands/manjaro.png "Manjaro")
-![Void Linux](https://raw.githubusercontent.com/keithieopia/piu/master/.readme-assets/brands/void.png "Void Linux")
-  
-
+![Elementary OS](https://raw.githubusercontent.com/keithieopia/piu/master/.readme-assets/brands/elementary.png "Elementary OS") &nbsp;
+![Debian](https://raw.githubusercontent.com/keithieopia/piu/master/.readme-assets/brands/debian.png "Debian") &nbsp;
+![Manjaro](https://raw.githubusercontent.com/keithieopia/piu/master/.readme-assets/brands/manjaro.png "Manjaro") &nbsp;
+![Void Linux](https://raw.githubusercontent.com/keithieopia/piu/master/.readme-assets/brands/void.png "Void Linux")  
 &nbsp;  
-> :grey_exclamation: *above brands, logos, and trademarks are property of 
+> :copyright: *above brands, logos, and trademarks are property of 
 their respective owners.*
 
 ## Installation
