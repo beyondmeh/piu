@@ -131,7 +131,7 @@ Submit bug reports via GitHub's [Issue Tracker](https://github.com/keithieopia/p
 
 
 ## Author
-Copyright &copy; 2017 - 2018 Timothy Keith, except where otherwise noted.
+Copyright &copy; 2017 - 2019 Timothy Keith, except where otherwise noted.
 
 Licensed under the [MIT license](https://github.com/keithieopia/piuw/blob/master/LICENSE).
 
