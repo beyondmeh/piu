@@ -7,26 +7,26 @@ cat <<HELP
 Cross-platform package manager wrapper
 
 usage: $(basename "$0") OPTION [PACKAGE]
-  
+
    SINGLE PACKAGE ACTIONS
-   (i)nstall : install a given package   
+   (i)nstall : install a given package
    (r)emove  : remove a given package
    (p)urge   : remove a given package and any related config files
    (s)earch  : search for a package
    (m)anual  : install a locally downloaded package (e.g.: a .deb file)
-   
+
    UPDATING
    (u)pdate  : update all installed packages
    (c)ache   : update the package cache / repository
-      
-               NOTE: update, install, and num-updates will automatically 
+
+               NOTE: update, install, and num-updates will automatically
                update the cache if it is old
-   
+
    MISC
    (l)ist            : list installed packages
-   (nu) num-updates  : number of packages with updates 
+   (nu) num-updates  : number of packages with updates
    (np) num-packages : number of installed packages
-   
+
 
 https://github.com/keithieopia/piu
 
@@ -75,7 +75,7 @@ apk_num_pkgs() {
 #
 
 pacman_install() { sudo pacman -S "$@"; }
-pacman_update()  { sudo pacman -Sy; }
+pacman_update()  { sudo pacman -Su; }
 pacman_remove()  { sudo pacman -Rs "$@"; }
 pacman_purge()   { sudo pacman -Rns "$@"; }
 pacman_search()  { pacman -Ss "$@"; }
@@ -209,48 +209,48 @@ case "$action" in
 		shift 1
 		eval ${PKGMAN}_search "$@"
 		;;
-		
+
 	r | remove)
 		shift 1
 		eval ${PKGMAN}_remove "$@"
 		;;
-		
+
 	p | purge)
 		shift 1
 		eval ${PKGMAN}_purge "$@"
 		;;
-	
+
 	l | list)
 		eval ${PKGMAN}_list
 		;;
-	
+
 	i | install)
 		shift 1
 		repo_update_if_needed
 		eval ${PKGMAN}_install "$@"
 		;;
-		
+
 	u | update)
 		repo_update_if_needed
 		eval ${PKGMAN}_update
 		;;
-		
-	nu | num-updates) 
+
+	nu | num-updates)
 		eval ${PKGMAN}_num_updates
 		;;
-		
+
 	np | num-packages)
 		eval ${PKGMAN}_num_pkgs
 		;;
-		
+
 	c | cache)
 		eval ${PKGMAN}_repo_update
 		;;
-		
+
 	m | manual)
 		eval ${PKGMAN}_manual
 		;;
-	
+
 	*)
 		usage
 		;;
