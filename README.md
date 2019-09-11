@@ -33,6 +33,7 @@ E: Unable to lock the administration directory (/var/lib/dpkg/), are you root?
 > *[Arch Linux](https://www.archlinux.org/),*
 > *[Debian](https://www.debian.org/),*
 > *[elementary OS](https://elementary.io/),*
+> *[Fedora](https://getfedora.org/),*
 > *[Manjaro](https://manjaro.org/),*
 > *[Linux Mint](https://www.linuxmint.com/),*
 > *[SteamOS](http://store.steampowered.com/steamos/),*
@@ -47,6 +48,7 @@ E: Unable to lock the administration directory (/var/lib/dpkg/), are you root?
 ![Elementary OS](https://raw.githubusercontent.com/keithieopia/piu/master/.readme-assets/brands/elementary.png "Elementary OS") &nbsp;
 ![Debian](https://raw.githubusercontent.com/keithieopia/piu/master/.readme-assets/brands/debian.png "Debian") &nbsp;
 ![Manjaro](https://raw.githubusercontent.com/keithieopia/piu/master/.readme-assets/brands/manjaro.png "Manjaro") &nbsp;
+![Fedora](https://raw.githubusercontent.com/keithieopia/piu/master/.readme-assets/brands/fedora.png "Fedora") &nbsp;
 ![Void Linux](https://raw.githubusercontent.com/keithieopia/piu/master/.readme-assets/brands/void.png "Void Linux")  
 &nbsp;  
 > :copyright: *above brands, logos, and trademarks are property of
