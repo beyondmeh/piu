@@ -172,7 +172,7 @@ apt_num_pkgs() {
 dnf_install() { sudo dnf install -C "$@"; }
 dnf_update()  { sudo dnf upgrade; }
 dnf_remove()  { sudo dnf remove -C "$@"; }
-dnf_purge()   { 
+dnf_purge()   {
     # yum / dnf remove works just like apt's purge
     # https://unix.stackexchange.com/questions/8191/what-is-fedoras-equivalent-of-apt-get-purge/8193
     sudo dnf remove "$@"
@@ -200,6 +200,36 @@ dnf_num_pkgs() {
 	dnf_list | wc -l
 }
 
+#
+# macOS
+#
+
+brew_install() { brew install "$@"; }
+brew_update()  { brew upgrade; }
+brew_remove()  { brew uninstall "$@"; }
+brew_search()  { brew search "$@"; }
+brew_list()    { brew list; }
+
+brew_repo_age() {
+	date +%s
+}
+
+brew_repo_update() {
+	brew update
+}
+
+brew_num_updates() {
+	echo "not implemented yet!" && exit 1;
+}
+
+brew_num_pkgs() {
+	brew_list | wc -l
+}
+
+is_darwin() {
+	uname -a | grep Darwin > /dev/null;
+}
+
 # Abstraction
 ########################################################################
 
@@ -223,22 +253,29 @@ if [ -f /etc/os-release ]; then
 	elif grep -q alpine /etc/os-release; then
 		PKGMAN='apk'
 	elif grep -q fedora /etc/os-release; then
-        PKGMAN='dnf'
+		PKGMAN='dnf'
 	else
 		echo "ERROR: I currently don't have support for your distro"
 		exit 1
 	fi
 else
-	echo "ERROR: /etc/os-release does not exist, so I can't tell which distro you're using!"
-	exit 1
+	if is_darwin; then
+		PKGMAN='brew'
+	else
+		echo "Error: cannot detect platform"
+		exit 1
+	fi
 fi
-
 
 # find what we're doing
 ########################################################################
 
 # make leading dashes optional, out of tradition
-action=$(echo "$1" | sed 's/^-*//g' --)
+if is_darwin; then
+  action=$(echo "$1" | sed 's/^-*//g')
+else
+  action=$(echo "$1" | sed 's/^-*//g' --)
+fi
 
 case "$action" in
 	s | search)
