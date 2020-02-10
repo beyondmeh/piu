@@ -1,6 +1,6 @@
 # piu (Platform Independant Updater)
 
-<img align="right" alt="Skunk Logo" src="https://raw.githubusercontent.com/keithieopia/piu/master/.readme-assets/logo/skunk-logo.png">
+<img align="right" alt="Skunk Logo" src=".readme-assets/logo/skunk-logo.png">
 
 **`piu` makes cross-platform package management stink less.**
 
