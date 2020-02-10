@@ -82,14 +82,21 @@ pacman_search()  { pacman -Ss "$@"; }
 pacman_list()    { pacman -Qqe; }
 pacman_manual()  { sudo pacman -U "$@"; }
 
+
+pacman_extract_date_from_log_line() {
+	date_string=`echo $1 | sed "s/] .*/]/" | sed -e 's/\[\(.*\)\]/\1/g'`
+	date -d "$date_string" +%s
+}
+
 pacman_repo_age() {
-	LOG_DATE=$(grep 'synchronizing package lists' /var/log/pacman.log | \
-               tail -1 | awk '{print $1" "$2}' | tr -d \[\])
-	date -d "$LOG_DATE" +%s
+	LOG_LINE=$(grep 'synchronizing package lists' /var/log/pacman.log | \
+		tail -1)
+	LOG_DATE=`pacman_extract_date_from_log_line "$LOG_LINE"`
+	echo $LOG_DATE
 }
 
 pacman_repo_update() {
-	if ! sudo -n pacman -Sy &> /dev/null; then
+	if ! sudo pacman -Sy &> /dev/null; then
 		echo "out-of-date"
 		exit 1
 	fi
@@ -322,6 +329,9 @@ case "$action" in
 
 	m | manual)
 		eval ${PKGMAN}_manual
+		;;
+
+	pass)
 		;;
 
 	*)
