@@ -96,7 +96,7 @@ pacman_repo_age() {
 }
 
 pacman_repo_update() {
-	if ! sudo pacman -Sy &> /dev/null; then
+	if ! sudo -n pacman -Sy &> /dev/null; then
 		echo "out-of-date"
 		exit 1
 	fi
