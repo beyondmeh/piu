@@ -331,9 +331,6 @@ case "$action" in
 		eval ${PKGMAN}_manual
 		;;
 
-	pass)
-		;;
-
 	*)
 		usage
 		;;
