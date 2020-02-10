@@ -44,9 +44,10 @@ E: Unable to lock the administration directory (/var/lib/dpkg/), are you root?
 ![Alpine Linux](https://raw.githubusercontent.com/keithieopia/piu/master/.readme-assets/brands/alpine.png "Alpine Linux") &nbsp;
 ![Arch Linux](https://raw.githubusercontent.com/keithieopia/piu/master/.readme-assets/brands/arch.png "Arch Linux") &nbsp;
 ![Linux Mint](https://raw.githubusercontent.com/keithieopia/piu/master/.readme-assets/brands/mint.png "Linux Mint") &nbsp;
-![macOS](https://raw.githubusercontent.com/keithieopia/piu/master/.readme-assets/brands/macos.png "macOS") &nbsp;
+![macOS](.readme-assets/brands/macos.png "macOS") &nbsp;
 ![Ubuntu](https://raw.githubusercontent.com/keithieopia/piu/master/.readme-assets/brands/ubuntu.png "Ubuntu")
 &nbsp;
+
 ![Elementary OS](https://raw.githubusercontent.com/keithieopia/piu/master/.readme-assets/brands/elementary.png "Elementary OS") &nbsp;
 ![Debian](https://raw.githubusercontent.com/keithieopia/piu/master/.readme-assets/brands/debian.png "Debian") &nbsp;
 ![Manjaro](https://raw.githubusercontent.com/keithieopia/piu/master/.readme-assets/brands/manjaro.png "Manjaro") &nbsp;
