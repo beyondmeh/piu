@@ -41,6 +41,7 @@ E: Unable to lock the administration directory (/var/lib/dpkg/), are you root?
 > *[Ubuntu](https://www.ubuntu.com/), and*
 > *[Void Linux](https://voidlinux.org/)*
 
+<<<<<<< HEAD
 ![Alpine Linux](.readme-assets/brands/alpine.png "Alpine Linux") &nbsp;
 ![Arch Linux](.readme-assets/brands/arch.png "Arch Linux") &nbsp;
 ![Linux Mint](.readme-assets/brands/mint.png "Linux Mint") &nbsp;
@@ -52,6 +53,20 @@ E: Unable to lock the administration directory (/var/lib/dpkg/), are you root?
 ![Manjaro](.readme-assets/brands/manjaro.png "Manjaro") &nbsp;
 ![Fedora](.readme-assets/brands/fedora.png "Fedora") &nbsp;
 ![Void Linux](.readme-assets/brands/void.png "Void Linux")
+=======
+![Alpine Linux](https://raw.githubusercontent.com/keithieopia/piu/master/.readme-assets/brands/alpine.png "Alpine Linux") &nbsp;
+![Arch Linux](https://raw.githubusercontent.com/keithieopia/piu/master/.readme-assets/brands/arch.png "Arch Linux") &nbsp;
+![Linux Mint](https://raw.githubusercontent.com/keithieopia/piu/master/.readme-assets/brands/mint.png "Linux Mint") &nbsp;
+![macOS](.readme-assets/brands/macos.png "macOS") &nbsp;
+![Ubuntu](https://raw.githubusercontent.com/keithieopia/piu/master/.readme-assets/brands/ubuntu.png "Ubuntu")
+&nbsp;
+
+![Elementary OS](https://raw.githubusercontent.com/keithieopia/piu/master/.readme-assets/brands/elementary.png "Elementary OS") &nbsp;
+![Debian](https://raw.githubusercontent.com/keithieopia/piu/master/.readme-assets/brands/debian.png "Debian") &nbsp;
+![Manjaro](https://raw.githubusercontent.com/keithieopia/piu/master/.readme-assets/brands/manjaro.png "Manjaro") &nbsp;
+![Fedora](https://raw.githubusercontent.com/keithieopia/piu/master/.readme-assets/brands/fedora.png "Fedora") &nbsp;
+![Void Linux](https://raw.githubusercontent.com/keithieopia/piu/master/.readme-assets/brands/void.png "Void Linux")
+>>>>>>> master
 &nbsp;
 > :copyright: *above brands, logos, and trademarks are property of
 their respective owners.*
