@@ -116,7 +116,7 @@ xbps_list()    { xbps-query -l; }
 xbps_manual()  { echo "not implemented yet!" && exit 1; }
 
 xbps_repo_age() {
-	stat -c '%Y' '/var/db/xbps/https___repo_voidlinux_eu_current'
+	stat -c '%Y' '/var/db/xbps/https___alpha_de_repo_voidlinux_org_current'
 }
 
 xbps_repo_update() {
