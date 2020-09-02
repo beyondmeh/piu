@@ -107,7 +107,7 @@ pacman_num_pkgs() {
 # Void Linux
 #
 
-xbps_install() { sudo xbps-install -S "$@"; }
+xbps_install() { sudo xbps-install "$@"; }
 xbps_update()  { sudo xbps-install -Su; }
 xbps_remove()  { sudo xbps-remove -R "$@"; }
 xbps_purge()   { sudo xbps-remove -R "$@" && sudo xbps-remove -Oo; }
