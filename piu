@@ -131,7 +131,7 @@ xbps_num_updates() {
 }
 
 xbps_num_pkgs() {
-	echo "not implemented yet!" && exit 1
+	xbps-query -l | wc -l
 }
 
 #
