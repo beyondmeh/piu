@@ -83,9 +83,7 @@ pacman_list()    { pacman -Qqe; }
 pacman_manual()  { sudo pacman -U "$@"; }
 
 pacman_repo_age() {
-	LOG_DATE=$(grep 'synchronizing package lists' /var/log/pacman.log | \
-               tail -1 | awk '{print $1" "$2}' | tr -d \[\])
-	date -d "$LOG_DATE" +%s
+	stat -c '%Y' '/var/cache/pacman/pkg'
 }
 
 pacman_repo_update() {
