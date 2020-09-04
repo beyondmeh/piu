@@ -290,7 +290,6 @@ else
   action=$(echo "$1" | sed 's/^-*//g' --)
 fi
 
-
 case "$action" in
 	s | search)
 		shift 1
