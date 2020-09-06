@@ -26,6 +26,7 @@ E: Unable to lock the administration directory (/var/lib/dpkg/), are you root?
 ```
 * And most important: *less typing!* Compare `piu u` to `apt update && apt upgrade`
 
+> since `piu` is a wrapper, it doesn't contribute *[to the problem](https://xkcd.com/927/)*
 
 ### Currently Supports
 
@@ -135,10 +136,22 @@ Curve25519 keys yet. In the meantime, consider using
 Submit bug reports via GitHub's [Issue Tracker](https://github.com/keithieopia/piu/issues)
 
 
-## Author
-Copyright &copy; 2017 - 2019 Timothy Keith, except where otherwise noted.
+## Contributing 
 
-Licensed under the [MIT license](https://github.com/keithieopia/piuw/blob/master/LICENSE).
+> piu makes package manage stink even less thanks to all of its contributors, 
+> both on Github and elsewhere. 
+> 
+> If you can make piu better or add support for a missing distro, please feel
+> free to submit a pull request  
+
+If however you are a distribution mantainer and are considering writing a new 
+package manager, please see this
+
+
+## License
+Copyright &copy; 2017 - 2020 Timothy Keith, except where otherwise noted.
+
+Licensed under the [ISC license](https://github.com/keithieopia/piuw/blob/master/LICENSE).
 
 *This is free software: you are free to change and redistribute it.
 There is NO WARRANTY, to the extent permitted by law.*
