@@ -103,16 +103,6 @@ simply because the cache is usually in `/var`, where most users don't
 have write permission.
 
 
-## Project Logo
-The project's skunk logo was drawn by the very talented Kelly. It has
-been digitized, cropped, and optimized for the web using
-[GIMP](https://www.gimp.org/) and [OptiPNG](http://optipng.sourceforge.net/).
-
-All the versions of the the logo, including the original drawing, are
-located in the `.readme-assets/logo` folder. All versions of the skunk logo
-are licensed under a [Creative Commons Attribution-ShareAlike 4.0 International License](https://creativecommons.org/licenses/by-sa/4.0/).
-
-
 ## Feedback
 I would love your feedback! If you found `piu` useful, please send me
 [an email](mailto:timothykeith@gmail.com). For the privacy conscious,
@@ -134,11 +124,19 @@ Curve25519 keys yet. In the meantime, consider using
 Submit bug reports via GitHub's [Issue Tracker](https://github.com/keithieopia/piu/issues)
 
 
-## Contributing 
+### Contributing 
 
-`piu` makes package manage stink even less thanks to all of its contributors, both on GitHub and elsewhere. 
+`piu` makes package manage stink even less thanks to [all of its contributors](https://github.com/keithieopia/piu/graphs/contributors), both on GitHub and elsewhere. 
 
-If you can make piu better or add support for a missing distro, please feel free to submit a pull request.  
+> The project's skunk logo was drawn by the very talented Kelly. It has
+> been digitized, cropped, and optimized for the web using
+> [GIMP](https://www.gimp.org/) and [OptiPNG](http://optipng.sourceforge.net/).
+>
+> All the versions of the the logo, including the original drawing, are
+> located in the `.readme-assets/logo` folder. All versions of the skunk logo
+> are licensed under a [Creative Commons Attribution-ShareAlike 4.0 International License](https://creativecommons.org/licenses/by-sa/4.0/).
+
+If you can make piu better or add support for a missing distro, please feel free to submit a pull request. There are no further requirements, contributing to `piu` is easy and also doesn't stink! 
 
 ## License
 Copyright &copy; 2017 - 2020 Timothy Keith, except where otherwise noted.
