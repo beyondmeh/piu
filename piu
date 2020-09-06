@@ -6,7 +6,7 @@ usage() {
 cat <<HELP
 Cross-platform package manager wrapper
 
-usage: $(basename "$0") OPTION [PACKAGE]
+usage: $(basename "$0") [cask] OPTION [PACKAGE]
 
    SINGLE PACKAGE ACTIONS
    (i)nstall : install a given package
@@ -202,11 +202,11 @@ dnf_num_pkgs() {
 # macOS
 #
 
-brew_install() { brew install "$@"; }
-brew_update()  { brew upgrade; }
-brew_remove()  { brew uninstall "$@"; }
-brew_search()  { brew search "$@"; }
-brew_list()    { brew list; }
+brew_install() { brew $BREW_CASK install "$@"; }
+brew_update()  { brew $BREW_CASK upgrade; }
+brew_remove()  { brew $BREW_CASK uninstall "$@"; }
+brew_search()  { brew $BREW_CASK search "$@"; }
+brew_list()    { brew $BREW_CASK list; }
 
 brew_repo_age() {
 	date +%s
@@ -270,6 +270,12 @@ fi
 
 # make leading dashes optional, out of tradition
 if is_darwin; then
+  # Detect cask argument
+  if [ "$1" == "cask" ]; then
+    BREW_CASK="cask"
+    shift 1
+  fi
+
   action=$(echo "$1" | sed 's/^-*//g')
 else
   action=$(echo "$1" | sed 's/^-*//g' --)
