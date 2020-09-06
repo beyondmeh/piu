@@ -26,8 +26,6 @@ E: Unable to lock the administration directory (/var/lib/dpkg/), are you root?
 ```
 * And most important: *less typing!* Compare `piu u` to `apt update && apt upgrade`
 
-> since `piu` is a wrapper, it doesn't contribute *[to the problem](https://xkcd.com/927/)*
-
 ### Currently Supports
 
 > *[Alpine Linux](https://alpinelinux.org/),*
@@ -138,15 +136,9 @@ Submit bug reports via GitHub's [Issue Tracker](https://github.com/keithieopia/p
 
 ## Contributing 
 
-> piu makes package manage stink even less thanks to all of its contributors, 
-> both on Github and elsewhere. 
-> 
-> If you can make piu better or add support for a missing distro, please feel
-> free to submit a pull request  
+`piu` makes package manage stink even less thanks to all of its contributors, both on GitHub and elsewhere. 
 
-If however you are a distribution mantainer and are considering writing a new 
-package manager, please see this
-
+If you can make piu better or add support for a missing distro, please feel free to submit a pull request.  
 
 ## License
 Copyright &copy; 2017 - 2020 Timothy Keith, except where otherwise noted.
