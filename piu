@@ -14,6 +14,7 @@ usage: $(basename "$0") [cask] OPTION [PACKAGE]
    (p)urge   : remove a given package and any related config files
    (s)earch  : search for a package
    (m)anual  : install a locally downloaded package (e.g.: a .deb file)
+   (f)iles   : list files provided by a given package
 
    UPDATING
    (u)pdate  : update all installed packages
@@ -177,6 +178,7 @@ dnf_purge()   {
 }
 dnf_search()  { dnf search -C "$@"; }
 dnf_list()    { dnf list installed -C | awk '{if(NR>1)print $1}'; }
+dnf_list_files() { dnf -C repoquery -l "$@"; }
 dnf_manual()  { sudo dnf localinstall "$@"; }
 
 dnf_repo_age() {
@@ -197,6 +199,7 @@ dnf_num_updates() {
 dnf_num_pkgs() {
 	dnf_list | wc -l
 }
+
 
 #
 # macOS
@@ -299,6 +302,10 @@ case "$action" in
 
 	l | list)
 		eval ${PKGMAN}_list
+		;;
+
+	f | files)
+		eval ${PKGMAN}_list_files "$@"
 		;;
 
 	i | install)
