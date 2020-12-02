@@ -309,6 +309,7 @@ case "$action" in
 		;;
 
 	f | files)
+		shift 1
 		eval ${PKGMAN}_list_files "$@"
 		;;
 
