@@ -81,6 +81,12 @@ pacman_remove()  { sudo pacman -Rs "$@"; }
 pacman_purge()   { sudo pacman -Rns "$@"; }
 pacman_search()  { pacman -Ss "$@"; }
 pacman_list()    { pacman -Qqe; }
+pacman_list_files() {
+	if pacman -F 2&1 | grep -q "does not exist"; then
+		sudo pacman -Fyy
+	fi
+	pacman -Fl "$@"
+}
 pacman_manual()  { sudo pacman -U "$@"; }
 
 pacman_repo_age() {
