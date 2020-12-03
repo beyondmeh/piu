@@ -82,10 +82,12 @@ pacman_purge()   { sudo pacman -Rns "$@"; }
 pacman_search()  { pacman -Ss "$@"; }
 pacman_list()    { pacman -Qqe; }
 pacman_list_files() {
-	if pacman -F 2&1 | grep -q "does not exist"; then
-		sudo pacman -Fyy
+	if ! pacman -Qs "$@" >/dev/null; then
+		sudo pacman -Sw --noconfirm "$@"
+		pacman -Qlp $(ls /var/cache/pacman/pkg/$@*)
+	else
+		pacman -Ql "$@"
 	fi
-	pacman -Fl "$@"
 }
 pacman_manual()  { sudo pacman -U "$@"; }
 
