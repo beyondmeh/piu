@@ -181,7 +181,7 @@ apt_list_files() {
 		# using apt-get prevents dependencies from downloading 
 		# and doesn't need sudo
 		DIR=$(mktemp -d)
-		(cd $DIR && apt-get download "$@" > /dev/null)
+		(cd $DIR && apt-get download "$@" > /dev/null 2>&1)
 		dpkg -c $DIR/*.deb
 	else
 		dpkg -L "$@"
