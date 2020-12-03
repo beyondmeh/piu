@@ -116,10 +116,6 @@ To import it into your keyring:
 $  curl https://gist.githubusercontent.com/keithieopia/434f3575ec1f020d6589a4c01dc0847e/raw/2e0749f2966ff501ee28797a926229c081f7e652/timothykeith.pub.asc | gpg --import -
 ```
 
-**NOTE:** SKS Public Key Servers (such as pgp.mit.edu) don't support
-Curve25519 keys yet. In the meantime, consider using
-[Keybase.io](https://keybase.io/); my username is [timothykeith](https://keybase.io/timothykeith).
-
 ### Bug Reports
 Submit bug reports via GitHub's [Issue Tracker](https://github.com/keithieopia/piu/issues)
 
