@@ -44,6 +44,9 @@ HELP
 # Alpine Linux
 #
 
+# WONTFIX:
+# piu depends on bash, which isn't in the base install of Alpine. 
+# Without it, the following error occurs: "-ash: piu: not found"
 apk_install() { sudo apk add "$@"; }
 apk_update()  { sudo apk upgrade; }
 apk_remove()  { sudo apk del "$@"; }
@@ -54,8 +57,6 @@ apk_list_files() {
 	# WONTFIX: 
 	# It seems that file content listings are optional with apks, such as 
 	# with `joe` and`nano`; apk will fail silently with $? as a success.
-	# also, `apk info -L` does not work with local uninstalled packages
-	
 	apk info -L "$@"
 }
 
