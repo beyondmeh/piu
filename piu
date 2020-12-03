@@ -178,8 +178,11 @@ apt_search()  { apt search "$@"; }
 apt_list()    { dpkg-query -f '${binary:Package}\n' -W; }
 apt_list_files() {
 	if ! apt list --installed | grep -q "$@"; then
-		sudo apt install --download-only "$@"
-		dpkg -c /var/cache/apt/archives/$@*
+		# using apt-get prevents dependencies from downloading 
+		# and doesn't need sudo
+		DIR=$(mktemp -d)
+		(cd $DIR && apt-get download "$@" > /dev/null)
+		dpkg -c $DIR/*.deb
 	else
 		dpkg -L "$@"
 	fi
