@@ -176,6 +176,14 @@ apt_remove()  { sudo apt remove "$@"; }
 apt_purge()   { sudo apt purge "$@"; }
 apt_search()  { apt search "$@"; }
 apt_list()    { dpkg-query -f '${binary:Package}\n' -W; }
+apt_list_files() {
+	if ! apt list --installed | grep -q "$@"; then
+		sudo apt install --download-only "$@"
+		dpkg -c /var/cache/apt/archives/$@*
+	else
+		dpkg -L "$@"
+	fi
+}
 apt_manual()  { sudo dpkg -i "$@"; }
 
 apt_repo_age() {
