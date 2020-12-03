@@ -50,6 +50,15 @@ apk_remove()  { sudo apk del "$@"; }
 apk_purge()   { sudo apk del "$@" && sudo apk cache clean; }
 apk_search()  { apk search -v "$@"; }
 apk_list()    { apk info; }
+apk_list_files() {
+	# WONTFIX: 
+	# It seems that file content listings are optional with apks, such as 
+	# with `joe` and`nano`; apk will fail silently with $? as a success.
+	# also, `apk info -L` does not work with local uninstalled packages
+	
+	apk info -L "$@"
+}
+
 apk_manual()  { sudo apk add --allow-untrusted "$@"; }
 
 apk_repo_age() {
@@ -82,6 +91,17 @@ pacman_purge()   { sudo pacman -Rns "$@"; }
 pacman_search()  { pacman -Ss "$@"; }
 pacman_list()    { pacman -Qqe; }
 pacman_list_files() {
+	# HELPWANTED:
+	# The below code will fail on similar named packages
+	# like chromium and chromium-bsu. The problem is two-fold
+	#
+	# 1. pacman searching needs to use ^PACKAGE$ to match 
+	# exact names. `pacman -Qs $$@^` doesn't work, but how to 
+	# properly escape is beyond me.
+	#
+	# 2. Output from `pacman -Sw` should be captured to get the
+	# exact filename of the package. Calling `ls` is sloppy 
+
 	if ! pacman -Qs "$@" >/dev/null; then
 		sudo pacman -Sw --noconfirm "$@"
 		pacman -Qlp $(ls /var/cache/pacman/pkg/$@*)
