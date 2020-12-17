@@ -261,7 +261,8 @@ brew_update()  { brew $BREW_CASK upgrade; }
 brew_remove()  { brew $BREW_CASK uninstall "$@"; }
 brew_search()  { brew $BREW_CASK search "$@"; }
 brew_list()    { brew $BREW_CASK list; }
-brew_manual()    { not_implemented; }
+brew_manual()  { not_implemented; }
+brew_cache()   { not_implemented; }
 
 brew_repo_age() {
 	date +%s
@@ -272,7 +273,7 @@ brew_repo_update() {
 }
 
 brew_num_updates() {
-	echo "not implemented yet!" && exit 1;
+  not_implemented;
 }
 
 brew_num_pkgs() {
