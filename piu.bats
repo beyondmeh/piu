@@ -7,7 +7,6 @@ num_pkgs repo_update manual"
 function brew () { echo $@; }
 
 # uname stub
-function brew () { echo $@; }
 function uname () { echo "Darwin"; }
 
 load ./piu
@@ -17,7 +16,7 @@ setup() {
   export -f uname
 }
 
-@test "'not_implemented' shows error message and exits" {
+@test "[UTIL] 'not_implemented' shows error message and exits" {
 
   # TODO: Test the exit code. Will require integration of the bats-support and
   # bats-assert libraries
