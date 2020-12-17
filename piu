@@ -6,7 +6,7 @@ usage() {
 cat <<HELP
 Cross-platform package manager wrapper
 
-usage: $(basename "$0") [cask] OPTION [PACKAGE]
+usage: $(basename "$0") OPTION [--cask] [PACKAGE]
 
    SINGLE PACKAGE ACTIONS
    (i)nstall : install a given package
