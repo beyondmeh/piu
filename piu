@@ -37,6 +37,13 @@ HELP
 }
 
 
+# Utils
+########################################################################
+not_implemented() {
+  echo "'${FUNCNAME[1]}' not implemented yet!" && exit 1
+}
+
+
 # Distro Specific
 ########################################################################
 
@@ -45,7 +52,7 @@ HELP
 #
 
 # WONTFIX:
-# piu depends on bash, which isn't in the base install of Alpine. 
+# piu depends on bash, which isn't in the base install of Alpine.
 # Without it, the following error occurs: "-ash: piu: not found"
 apk_install() { sudo apk add "$@"; }
 apk_update()  { sudo apk upgrade; }
@@ -54,8 +61,8 @@ apk_purge()   { sudo apk del "$@" && sudo apk cache clean; }
 apk_search()  { apk search -v "$@"; }
 apk_list()    { apk info; }
 apk_list_files() {
-	# WONTFIX: 
-	# It seems that file content listings are optional with apks, such as 
+	# WONTFIX:
+	# It seems that file content listings are optional with apks, such as
 	# with `joe` and`nano`; apk will fail silently with $? as a success.
 	apk info -L "$@"
 }
@@ -96,12 +103,12 @@ pacman_list_files() {
 	# The below code will fail on similar named packages
 	# like chromium and chromium-bsu. The problem is two-fold
 	#
-	# 1. pacman searching needs to use ^PACKAGE$ to match 
-	# exact names. `pacman -Qs $$@^` doesn't work, but how to 
+	# 1. pacman searching needs to use ^PACKAGE$ to match
+	# exact names. `pacman -Qs $$@^` doesn't work, but how to
 	# properly escape is beyond me.
 	#
 	# 2. Output from `pacman -Sw` should be captured to get the
-	# exact filename of the package. Calling `ls` is sloppy 
+	# exact filename of the package. Calling `ls` is sloppy
 
 	if ! pacman -Qs "$@" >/dev/null; then
 		sudo pacman -Sw --noconfirm "$@"
@@ -142,7 +149,7 @@ xbps_purge()   { sudo xbps-remove -R "$@" && sudo xbps-remove -Oo; }
 xbps_search()  { xbps-query -Rs "$@"; }
 xbps_list()    { xbps-query -l; }
 xbps_list_files() { xbps-query -Rf "$@"; }
-xbps_manual()  { 
+xbps_manual()  {
 	xbps-rindex -a *.xbps
 	xbps-install --repository=$PWD "$@"
 }
@@ -178,7 +185,7 @@ apt_search()  { apt search "$@"; }
 apt_list()    { dpkg-query -f '${binary:Package}\n' -W; }
 apt_list_files() {
 	if ! apt list --installed 2>/dev/null | grep -q "$@"; then
-		# using apt-get prevents dependencies from downloading 
+		# using apt-get prevents dependencies from downloading
 		# and doesn't need sudo
 		DIR=$(mktemp -d)
 		(cd $DIR && apt-get download "$@" > /dev/null 2>&1)
@@ -254,6 +261,7 @@ brew_update()  { brew $BREW_CASK upgrade; }
 brew_remove()  { brew $BREW_CASK uninstall "$@"; }
 brew_search()  { brew $BREW_CASK search "$@"; }
 brew_list()    { brew $BREW_CASK list; }
+brew_manual()    { not_implemented; }
 
 brew_repo_age() {
 	date +%s
