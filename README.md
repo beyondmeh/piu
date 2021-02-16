@@ -59,7 +59,7 @@ their respective owners.*
 ## Installation
 
 ```console
-$ curl -o https://raw.githubusercontent.com/keithieopia/piu/master/piu && sudo mv piu /usr/local/bin && sudo chmod +x /usr/local/bin/piu
+$ curl https://raw.githubusercontent.com/keithieopia/piu/master/piu -o piu && chmod +x piu && sudo mv piu /usr/local/bin
 ```
 Alternatively, if you have something like `~/bin` setup, just download
 `piu` there.
