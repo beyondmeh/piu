@@ -31,7 +31,7 @@ usage: $(basename "$0") OPTION [--cask] [PACKAGE]
 
 https://github.com/keithieopia/piu
 
-Copyright (c) 2017-2020 Timothy Keith
+Copyright (c) 2017-2021 Timothy Keith
 Licensed under the ISC license.
 HELP
 }
@@ -219,7 +219,7 @@ apt_num_pkgs() {
 # Red Hat / Fedora
 #
 
-dnf_install() { sudo dnf install -C "$@"; }
+dnf_install() { sudo dnf install "$@"; }
 dnf_update()  { sudo dnf upgrade; }
 dnf_remove()  { sudo dnf remove -C "$@"; }
 dnf_purge()   {
