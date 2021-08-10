@@ -1,5 +1,51 @@
 #!/bin/bash
 
+__piutmp() {
+	# Piu Temp Directory Manager
+	case ${1} in
+		[sS][tT][aA][rR][tT])
+			[[ -d "/tmp/${0}" ]] || mkdir -p "/tmp/${0}" 2> /dev/null 
+		;;
+		[sS][tT][oO][pP])
+			[[ -d "/tmp/${0}" ]] && rm -rf "/tmp/${0}" 2> /dev/null
+		;;
+		[rR][eE][sS][tT][aA][rR][tT])
+			[[ -d "/tmp/${0}" ]] && { rm -rf "/tmp/${0}" 2> /dev/null && mkdir -p "/tmp/${0}" 2> /dev/null ; } 
+		;;
+	esac
+}
+
+__piuplm () {
+	# Piu PID Lock Manager
+	case ${1} in
+		[sS][tT][aA][rR][tT])
+			__piutmp start
+			echo "piu_pid='${BASHPID}'" > "/tmp/${0}/piu.pid"
+		;;
+		[sS][tT][oO][pP])
+			__piutmp stop
+		;;
+		[rR][eE][sS][tT][aA][rR][tT])
+			__piutmp restart
+		;;
+	esac
+}
+
+bye() {
+	__piuplm stop
+	exit
+}
+
+if [[ -f "/tmp/${0}/piu.pid" ]] ; then
+	. "/tmp/${0}/piu.pid"
+	echo -e "$(basename ${0}) says: i'm already running on another proccess (${piu_pid}).\nIf you think this is a mistake you can delete my lock file:\n/tmp/${0}/piu.pid"
+	exit 1
+else
+	__piuplm start
+fi
+
+trap bye INT
+
 UPDATE_AFTER=43200 # 12 hours
 
 usage() {
@@ -302,7 +348,7 @@ repo_update_if_needed() {
 if [ -f /etc/os-release ]; then
 	if grep -q arch /etc/os-release; then
 		PKGMAN='pacman'
-	elif grep -q debian /etc/os-release; then
+	elif [[ -f /etc/debian_version ]]; then
 		PKGMAN='apt'
 	elif grep -q void /etc/os-release; then
 		PKGMAN='xbps'
@@ -340,58 +386,70 @@ else
 fi
 
 case "$action" in
-	s | search)
+	[sS]|[sS][eE][aA][rR][cC][hH])
 		shift 1
 		eval ${PKGMAN}_search "$@"
-		;;
+		bye
+	;;
 
-	r | remove)
+	[rR]|[rR][eE][mM][oO][vV][eE])
 		shift 1
 		eval ${PKGMAN}_remove "$@"
-		;;
+		bye
+	;;
 
-	p | purge)
+	[pP]|[pP][uU][rR][gG][eE])
 		shift 1
 		eval ${PKGMAN}_purge "$@"
-		;;
+		bye
+	;;
 
-	l | list)
+	[lL]|[lL][iI][sS][tT])
 		eval ${PKGMAN}_list
-		;;
+		bye
+	;;
 
-	f | files)
+	[fF]|[fF][iI][lL][eE][sS])
 		shift 1
 		eval ${PKGMAN}_list_files "$@"
-		;;
+		bye
+	;;
 
-	i | install)
+	[iI]|[iI][nN][sS][tT][aA][lL][lL])
 		shift 1
 		repo_update_if_needed
 		eval ${PKGMAN}_install "$@"
-		;;
+		bye
+	;;
 
-	u | update)
+	[uU]|[uU][pP][dD][aA][tT][eE])
 		repo_update_if_needed
 		eval ${PKGMAN}_update
-		;;
+		bye
+	;;
 
-	nu | num-updates)
+	[nN][uU]|[nN][uU][mM]-[uU][pP][dD][aA][tT][eE][sS])
 		eval ${PKGMAN}_num_updates
-		;;
+		bye
+	;;
 
-	np | num-packages)
+	[nN][pP]|[nN][uU][mM]-[pP][aA][cC][kK][aA][gG][eE][sS])
 		eval ${PKGMAN}_num_pkgs
-		;;
+		bye
+	;;
 
-	c | cache)
+	[cC]|[cC][aA][cC][hH][eE])
 		eval ${PKGMAN}_repo_update
-		;;
+		bye
+	;;
 
-	m | manual)
+	[mM]|[mM][aA][nN][uU][aA][lL])
 		eval ${PKGMAN}_manual
-		;;
+		bye
+	;;
 
 	*)
 		usage
-		;;
+		bye
+	;;
 esac
