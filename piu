@@ -74,7 +74,6 @@ usage: $(basename "$0") OPTION [--cask] [PACKAGE]
    (nu) num-updates  : number of packages with updates
    (np) num-packages : number of installed packages
 
-
 https://github.com/keithieopia/piu
 
 Copyright (c) 2017-2021 Timothy Keith
@@ -82,21 +81,15 @@ Licensed under the ISC license.
 HELP
 }
 
-
 # Utils
 ########################################################################
-
-not_implemented() {
-  echo "'${FUNCNAME[1]}' not implemented yet!" && exit 1
-}
+not_implemented() { echo "'${FUNCNAME[1]}' not implemented yet!" && exit 1 }
 
 # Distro Specific
 ########################################################################
-
 #
 # Alpine Linux
 #
-
 # WONTFIX:
 # piu depends on bash, which isn't in the base install of Alpine.
 # Without it, the following error occurs: "-ash: piu: not found"
@@ -112,32 +105,19 @@ apk_list_files() {
 	# with `joe` and`nano`; apk will fail silently with $? as a success.
 	apk info -L "$@"
 }
-
 apk_manual()  { sudo apk add --allow-untrusted "$@"; }
-
-apk_repo_age() {
-	find /var/cache/apk -type f -print0 | xargs -0 stat -c %Z | sort | tail -1
-}
-
+apk_repo_age() { find /var/cache/apk -type f -print0 | xargs -0 stat -c %Z | sort | tail -1 }
 apk_repo_update() {
 	if ! sudo -n apk update &> /dev/null; then
 		echo "out-of-date"
 		exit 1
 	fi
 }
-
-apk_num_updates() {
-	echo "not implemented yet!" && exit 1;
-}
-
-apk_num_pkgs() {
-	apk list | wc -l
-}
-
+apk_num_updates() { echo "not implemented yet!" && exit 1; }
+apk_num_pkgs() { apk list | wc -l }
 #
 # Arch Linux
 #
-
 pacman_install() { sudo pacman -S "$@"; }
 pacman_update()  { sudo pacman -Su; }
 pacman_remove()  { sudo pacman -Rs "$@"; }
@@ -164,30 +144,18 @@ pacman_list_files() {
 	fi
 }
 pacman_manual()  { sudo pacman -U "$@"; }
-
-pacman_repo_age() {
-	stat -c '%Y' '/var/cache/pacman/pkg'
-}
-
+pacman_repo_age() { stat -c '%Y' '/var/cache/pacman/pkg' }
 pacman_repo_update() {
 	if ! sudo -n pacman -Sy &> /dev/null; then
 		echo "out-of-date"
 		exit 1
 	fi
 }
-
-pacman_num_updates() {
-	pacman -Qu | wc -l
-}
-
-pacman_num_pkgs() {
-	pacman_list | wc -l
-}
-
+pacman_num_updates() { pacman -Qu | wc -l }
+pacman_num_pkgs() { pacman_list | wc -l }
 #
 # Void Linux
 #
-
 xbps_install() { sudo xbps-install "$@"; }
 xbps_update()  { sudo xbps-install -Su; }
 xbps_remove()  { sudo xbps-remove -R "$@"; }
@@ -199,30 +167,18 @@ xbps_manual()  {
 	xbps-rindex -a *.xbps
 	xbps-install --repository=$PWD "$@"
 }
-
-xbps_repo_age() {
-	stat -c '%Y' '/var/db/xbps/https___alpha_de_repo_voidlinux_org_current'
-}
-
+xbps_repo_age() { stat -c '%Y' '/var/db/xbps/https___alpha_de_repo_voidlinux_org_current' }
 xbps_repo_update() {
 	if ! sudo -n xbps-install -S &> /dev/null; then
 		echo "out-of-date"
 		exit 1
 	fi
 }
-
-xbps_num_updates() {
-	xbps-install -nu | wc -l
-}
-
-xbps_num_pkgs() {
-	xbps-query -l | wc -l
-}
-
+xbps_num_updates() { xbps-install -nu | wc -l }
+xbps_num_pkgs() { xbps-query -l | wc -l }
 #
 # Debian / Ubuntu
 #
-
 apt_install() { sudo apt install "$@"; }
 apt_update()  { sudo apt upgrade; }
 apt_remove()  { sudo apt remove "$@"; }
@@ -241,30 +197,18 @@ apt_list_files() {
 	fi
 }
 apt_manual()  { sudo dpkg -i "$@"; }
-
-apt_repo_age() {
-	stat -c '%Y' '/var/cache/apt/pkgcache.bin'
-}
-
+apt_repo_age() { stat -c '%Y' '/var/cache/apt/pkgcache.bin' }
 apt_repo_update() {
 	if ! sudo -n apt update &> /dev/null; then
 		echo 'out-of-date'
 		exit 1
 	fi
 }
-
-apt_num_updates() {
-	apt list --upgradeable 2>/dev/null | tail -n +2 | wc -l
-}
-
-apt_num_pkgs() {
-	apt_list | wc -l
-}
-
+apt_num_updates() { apt list --upgradeable 2>/dev/null | tail -n +2 | wc -l }
+apt_num_pkgs() { apt_list | wc -l }
 #
 # Red Hat / Fedora
 #
-
 dnf_install() { sudo dnf install "$@"; }
 dnf_update()  { sudo dnf upgrade; }
 dnf_remove()  { sudo dnf remove -C "$@"; }
@@ -277,31 +221,18 @@ dnf_search()  { dnf search -C "$@"; }
 dnf_list()    { dnf list installed -C | awk '{if(NR>1)print $1}'; }
 dnf_list_files() { dnf -C repoquery -l "$@"; }
 dnf_manual()  { sudo dnf localinstall "$@"; }
-
-dnf_repo_age() {
-	stat -c '%Y' '/var/cache/dnf/packages.db'
-}
-
+dnf_repo_age() { stat -c '%Y' '/var/cache/dnf/packages.db' }
 dnf_repo_update() {
 	if ! dnf clean metadata && dnf check-update &> /dev/null; then
 		echo 'out-of-date'
 		exit 1
 	fi
 }
-
-dnf_num_updates() {
-	dnf check-update | awk '{if(NR>2)print $1}' | wc -l
-}
-
-dnf_num_pkgs() {
-	dnf_list | wc -l
-}
-
-
+dnf_num_updates() { dnf check-update | awk '{if(NR>2)print $1}' | wc -l }
+dnf_num_pkgs() { dnf_list | wc -l }
 #
 # macOS
 #
-
 brew_install() { brew $BREW_CASK install "$@"; }
 brew_update()  { brew $BREW_CASK upgrade; }
 brew_remove()  { brew $BREW_CASK uninstall "$@"; }
@@ -309,32 +240,15 @@ brew_search()  { brew $BREW_CASK search "$@"; }
 brew_list()    { brew $BREW_CASK list; }
 brew_manual()  { not_implemented; }
 brew_purge()   { not_implemented; }
-
 brew_list_files() { not_implemented; }
-
-brew_repo_age() {
-	date +%s
-}
-
-brew_repo_update() {
-	brew update
-}
-
-brew_num_updates() {
-  not_implemented;
-}
-
-brew_num_pkgs() {
-	brew_list | wc -l
-}
-
-is_darwin() {
-	uname -a | grep Darwin > /dev/null;
-}
+brew_repo_age() { date +%s }
+brew_repo_update() { brew update }
+brew_num_updates() { not_implemented; }
+brew_num_pkgs() { brew_list | wc -l }
+is_darwin() { uname -a | grep Darwin > /dev/null; }
 
 # Abstraction
 ########################################################################
-
 repo_update_if_needed() {
 	CURRENT_TIME=$(date '+%s')
 	LAST_UPDATE=$(eval "${PKGMAN}"_repo_age)
@@ -371,7 +285,6 @@ fi
 
 # find what we're doing
 ########################################################################
-
 # make leading dashes optional, out of tradition
 if is_darwin; then
   # Detect cask argument
