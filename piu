@@ -83,7 +83,7 @@ HELP
 
 # Utils
 ########################################################################
-not_implemented() { echo "'${FUNCNAME[1]}' not implemented yet!" && exit 1 }
+not_implemented() { echo "'${FUNCNAME[1]}' not implemented yet!" && exit 1; }
 
 # Distro Specific
 ########################################################################
@@ -106,7 +106,7 @@ apk_list_files() {
 	apk info -L "$@"
 }
 apk_manual()  { sudo apk add --allow-untrusted "$@"; }
-apk_repo_age() { find /var/cache/apk -type f -print0 | xargs -0 stat -c %Z | sort | tail -1 }
+apk_repo_age() { find /var/cache/apk -type f -print0 | xargs -0 stat -c %Z | sort | tail -1; }
 apk_repo_update() {
 	if ! sudo -n apk update &> /dev/null; then
 		echo "out-of-date"
@@ -114,7 +114,7 @@ apk_repo_update() {
 	fi
 }
 apk_num_updates() { echo "not implemented yet!" && exit 1; }
-apk_num_pkgs() { apk list | wc -l }
+apk_num_pkgs() { apk list | wc -l; }
 #
 # Arch Linux
 #
@@ -144,15 +144,15 @@ pacman_list_files() {
 	fi
 }
 pacman_manual()  { sudo pacman -U "$@"; }
-pacman_repo_age() { stat -c '%Y' '/var/cache/pacman/pkg' }
+pacman_repo_age() { stat -c '%Y' '/var/cache/pacman/pkg'; }
 pacman_repo_update() {
 	if ! sudo -n pacman -Sy &> /dev/null; then
 		echo "out-of-date"
 		exit 1
 	fi
 }
-pacman_num_updates() { pacman -Qu | wc -l }
-pacman_num_pkgs() { pacman_list | wc -l }
+pacman_num_updates() { pacman -Qu | wc -l; }
+pacman_num_pkgs() { pacman_list | wc -l; }
 #
 # Void Linux
 #
@@ -167,15 +167,15 @@ xbps_manual()  {
 	xbps-rindex -a *.xbps
 	xbps-install --repository=$PWD "$@"
 }
-xbps_repo_age() { stat -c '%Y' '/var/db/xbps/https___alpha_de_repo_voidlinux_org_current' }
+xbps_repo_age() { stat -c '%Y' '/var/db/xbps/https___alpha_de_repo_voidlinux_org_current'; }
 xbps_repo_update() {
 	if ! sudo -n xbps-install -S &> /dev/null; then
 		echo "out-of-date"
 		exit 1
 	fi
 }
-xbps_num_updates() { xbps-install -nu | wc -l }
-xbps_num_pkgs() { xbps-query -l | wc -l }
+xbps_num_updates() { xbps-install -nu | wc -l; }
+xbps_num_pkgs() { xbps-query -l | wc -l; }
 #
 # Debian / Ubuntu
 #
@@ -197,15 +197,15 @@ apt_list_files() {
 	fi
 }
 apt_manual()  { sudo dpkg -i "$@"; }
-apt_repo_age() { stat -c '%Y' '/var/cache/apt/pkgcache.bin' }
+apt_repo_age() { stat -c '%Y' '/var/cache/apt/pkgcache.bin'; }
 apt_repo_update() {
 	if ! sudo -n apt update &> /dev/null; then
 		echo 'out-of-date'
 		exit 1
 	fi
 }
-apt_num_updates() { apt list --upgradeable 2>/dev/null | tail -n +2 | wc -l }
-apt_num_pkgs() { apt_list | wc -l }
+apt_num_updates() { apt list --upgradeable 2>/dev/null | tail -n +2 | wc -l; }
+apt_num_pkgs() { apt_list | wc -l; }
 #
 # Red Hat / Fedora
 #
@@ -221,15 +221,15 @@ dnf_search()  { dnf search -C "$@"; }
 dnf_list()    { dnf list installed -C | awk '{if(NR>1)print $1}'; }
 dnf_list_files() { dnf -C repoquery -l "$@"; }
 dnf_manual()  { sudo dnf localinstall "$@"; }
-dnf_repo_age() { stat -c '%Y' '/var/cache/dnf/packages.db' }
+dnf_repo_age() { stat -c '%Y' '/var/cache/dnf/packages.db'; }
 dnf_repo_update() {
 	if ! dnf clean metadata && dnf check-update &> /dev/null; then
 		echo 'out-of-date'
 		exit 1
 	fi
 }
-dnf_num_updates() { dnf check-update | awk '{if(NR>2)print $1}' | wc -l }
-dnf_num_pkgs() { dnf_list | wc -l }
+dnf_num_updates() { dnf check-update | awk '{if(NR>2)print $1}' | wc -l; }
+dnf_num_pkgs() { dnf_list | wc -l; }
 #
 # macOS
 #
@@ -241,10 +241,10 @@ brew_list()    { brew $BREW_CASK list; }
 brew_manual()  { not_implemented; }
 brew_purge()   { not_implemented; }
 brew_list_files() { not_implemented; }
-brew_repo_age() { date +%s }
-brew_repo_update() { brew update }
+brew_repo_age() { date +%s; }
+brew_repo_update() { brew update; }
 brew_num_updates() { not_implemented; }
-brew_num_pkgs() { brew_list | wc -l }
+brew_num_pkgs() { brew_list | wc -l; }
 is_darwin() { uname -a | grep Darwin > /dev/null; }
 
 # Abstraction
