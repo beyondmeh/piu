@@ -1,5 +1,10 @@
 #!/bin/bash
 
+#Cross-platform package manager wrapper
+#https://github.com/keithieopia/piu
+#Copyright (c) 2017-2021 Timothy Keith
+#Licensed under the ISC license.
+
 __piutmp() {
 	# Piu Temp Directory Manager
 	case ${1} in
