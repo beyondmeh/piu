@@ -327,7 +327,7 @@ case "$action" in
 		eval ${PKGMAN}_list
 		bye
 	;;
-# files
+# list files
 	[fF]|[fF][iI][lL][eE][sS])
 		shift 1
 		eval ${PKGMAN}_list_files "$@"
