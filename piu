@@ -363,7 +363,8 @@ case "$action" in
 	;;
 # manual
 	[mM]|[mM][aA][nN][uU][aA][lL])
-		eval ${PKGMAN}_manual
+		shift 1
+		eval ${PKGMAN}_manual "$@"
 		bye
 	;;
 
