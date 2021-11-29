@@ -304,66 +304,66 @@ else
 fi
 
 case "$action" in
+# search
 	[sS]|[sS][eE][aA][rR][cC][hH])
 		shift 1
 		eval ${PKGMAN}_search "$@"
 		bye
 	;;
-
+# remove
 	[rR]|[rR][eE][mM][oO][vV][eE])
 		shift 1
 		eval ${PKGMAN}_remove "$@"
 		bye
 	;;
-
+# purge
 	[pP]|[pP][uU][rR][gG][eE])
 		shift 1
 		eval ${PKGMAN}_purge "$@"
 		bye
 	;;
-
+# list
 	[lL]|[lL][iI][sS][tT])
 		eval ${PKGMAN}_list
 		bye
 	;;
-
+# files
 	[fF]|[fF][iI][lL][eE][sS])
 		shift 1
 		eval ${PKGMAN}_list_files "$@"
 		bye
 	;;
-
+# install
 	[iI]|[iI][nN][sS][tT][aA][lL][lL])
 		shift 1
 		repo_update_if_needed
 		eval ${PKGMAN}_install "$@"
 		bye
 	;;
-
+# update
 	[uU]|[uU][pP][dD][aA][tT][eE])
 		repo_update_if_needed
 		eval ${PKGMAN}_update
 		bye
 	;;
-
+# num updates
 	[nN][uU]|[nN][uU][mM]-[uU][pP][dD][aA][tT][eE][sS])
 		eval ${PKGMAN}_num_updates
 		bye
 	;;
-
+# num packages
 	[nN][pP]|[nN][uU][mM]-[pP][aA][cC][kK][aA][gG][eE][sS])
 		eval ${PKGMAN}_num_pkgs
 		bye
 	;;
-
+# cache
 	[cC]|[cC][aA][cC][hH][eE])
 		eval ${PKGMAN}_repo_update
 		bye
 	;;
-
+# manual
 	[mM]|[mM][aA][nN][uU][aA][lL])
-		shift 1
-		eval ${PKGMAN}_manual "$@"
+		eval ${PKGMAN}_manual
 		bye
 	;;
 
