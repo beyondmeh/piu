@@ -107,16 +107,7 @@ have write permission.
 
 ## Feedback
 I would love your feedback! If you found `piu` useful, please send me
-[an email](mailto:timothykeith@gmail.com). For the privacy conscious,
-feel free to encrypt any messages using my
-[PGP key](https://gist.githubusercontent.com/keithieopia/434f3575ec1f020d6589a4c01dc0847e/raw/2e0749f2966ff501ee28797a926229c081f7e652/timothykeith.pub.asc):
-
-> 46E6 9F69 90C1 DE8C 9791 88EE 94A4 E2D4 6B32 AA11
-
-To import it into your keyring:
-```console
-$  curl https://gist.githubusercontent.com/keithieopia/434f3575ec1f020d6589a4c01dc0847e/raw/2e0749f2966ff501ee28797a926229c081f7e652/timothykeith.pub.asc | gpg --import -
-```
+[an email](mailto:timothykeith@gmail.com).
 
 ### Bug Reports
 Submit bug reports via GitHub's [Issue Tracker](https://github.com/keithieopia/piu/issues)
