@@ -12,7 +12,7 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@master
+      - uses: actions/checkout@v2
         with:
           fetch-depth: 1
       - name: Run Makefile
@@ -22,5 +22,5 @@ jobs:
           git config user.email "piu@piuproject.org"
           git config user.name "Piu Bot via GitHub Actions"
           git add bin/piu
-          git commit -m "Automated Continuous Delivery"
+          git commit -am "Automated Continuous Delivery"
           git push
