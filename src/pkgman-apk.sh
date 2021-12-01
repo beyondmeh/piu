@@ -14,7 +14,7 @@ apk_list_files() {
 	# WONTFIX:
 	# It seems that file content listings are optional with apks, such as
 	# with `joe` and`nano`; apk will fail silently with $? as a success.
-	apk info -L "$@"
+	apk info -L "$@";
 }
 apk_manual()  { sudo apk add --allow-untrusted "$@"; }
 apk_repo_age() { find /var/cache/apk -type f -print0 | xargs -0 stat -c %Z | sort | tail -1; }
