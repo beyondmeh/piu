@@ -236,6 +236,26 @@ dnf_repo_update() {
 dnf_num_updates() { dnf check-update | awk '{if(NR>2)print $1}' | wc -l; }
 dnf_num_pkgs() { dnf_list | wc -l; }
 #
+# openSUSE
+#
+zypper_install() { sudo zypper in "$@"; }
+zypper_update()  { sudo zypper up; }
+zypper_remove()  { sudo zypper rm -C "$@"; }
+zypper_purge()   { sudo zypper rm -u "$@"; }
+zypper_search()  { zypper search "$@"; }
+zypper_list()    { zypper search -i | grep ^i | awk '{print $3}'; }
+zypper_list_files() { dnf -C repoquery -l "$@"; }
+zypper_manual()  { sudo zypper in "$@"; }
+zypper_repo_age() { stat -c '%Y' '/var/cache/zypp/raw/repo-oss/repodata/repomd.xml'; }
+zypper_repo_update() {
+	if ! sudo zypper ref &> /dev/null; then
+		echo 'out-of-date'
+		exit 1
+	fi
+}
+zypper_num_updates() { zypper lu | grep ^v | wc -l; }
+zyyper_num_pkgs() { zypper_list | wc -l; }
+#
 # macOS
 #
 brew_install() { brew $BREW_CASK install "$@"; }
@@ -275,6 +295,13 @@ if [ -f /etc/os-release ]; then
 		PKGMAN='apk'
 	elif grep -q fedora /etc/os-release; then
 		PKGMAN='dnf'
+	elif grep -q openSUSE /etc/os-release; then
+		# openSUSE supports dnf, but the default is zypper
+		if hash dnf 2>/dev/null; then
+			PKGMAN='dnf'
+		else
+			PKGMAN='zypper'
+		fi
 	else
 		echo "ERROR: I currently don't have support for your distro"
 		exit 1
