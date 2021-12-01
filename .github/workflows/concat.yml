@@ -2,15 +2,18 @@ name: build-piu
 
 on:
   push:
-    branches: [ master ]
+    branches:
+      - separated-pkgman-logic 
   pull_request:
-    branches: [ master ]
+    branches:
+      - separated-pkgman-logic
 
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - name: checkout repo
-        uses: actions/checkout@v2
-      - name: build application
-        run: make
+      - uses: actions/checkout@separated-pkgman-logic
+        with:
+          fetch-depth: 1
+      - name: Run Makefile
+        run: make all
