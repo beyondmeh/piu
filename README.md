@@ -137,7 +137,7 @@ If you can make piu better or add support for a missing distro, please feel free
 ## License
 Copyright &copy; 2017 - 2020 Timothy Keith, except where otherwise noted.
 
-Licensed under the [ISC license](https://github.com/keithieopia/piuw/blob/master/LICENSE).
+Licensed under the [ISC license](https://github.com/keithieopia/piu/blob/master/LICENSE).
 
 *This is free software: you are free to change and redistribute it.
 There is NO WARRANTY, to the extent permitted by law.*
