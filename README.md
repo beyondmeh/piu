@@ -36,6 +36,7 @@ E: Unable to lock the administration directory (/var/lib/dpkg/), are you root?
 > *[macOS](https://www.apple.com/macos/),*
 > *[Manjaro](https://manjaro.org/),*
 > *[Linux Mint](https://www.linuxmint.com/),*
+> *[OpenSUSE](https://opensuse.org),*
 > *[SteamOS](http://store.steampowered.com/steamos/),*
 > *[Ubuntu](https://www.ubuntu.com/), and*
 > *[Void Linux](https://voidlinux.org/)*
@@ -52,6 +53,7 @@ E: Unable to lock the administration directory (/var/lib/dpkg/), are you root?
 ![Manjaro](.readme-assets/brands/manjaro.png "Manjaro") &nbsp;
 ![Fedora](.readme-assets/brands/fedora.png "Fedora") &nbsp;
 ![Void Linux](.readme-assets/brands/void.png "Void Linux")
+![OpenSUSE](.readme-assets/brands/opensuse.png "OpenSUSE")
 &nbsp;
 > :copyright: *above brands, logos, and trademarks are property of
 their respective owners.*
