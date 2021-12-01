@@ -101,9 +101,12 @@ repo_update_if_needed() {
 	fi
 }
 
-# INSERT PKGMAN
-# INSERT DISTRO-DETECT
+# CD automatically inserts the below, do not change comments
+########################################################################
 
+# INSERT PKGMAN
+
+# INSERT DISTRO-DETECT
 
 # find what we're doing
 ########################################################################
