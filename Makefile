@@ -7,7 +7,7 @@ concat:
 	sed '/# INSERT DISTRO-DETECT/ r src/distro-detect.sh' piu1.tmp > piu2.tmp
 
 build:
-	mkdir bin
+	mkdir -p bin
 	cp piu2.tmp bin/piu
 
 clean:
