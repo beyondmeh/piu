@@ -258,7 +258,11 @@ zyyper_num_pkgs() { zypper_list | wc -l; }
 #
 # macOS
 #
-brew_install() { brew $BREW_CASK install "$@"; }
+brew_install() {
+	# drop -y or --yes flags as they are unsupported on brew
+	brew_install_args=$(echo "$@" | sed -e 's/-y//' -e 's/--yes//')
+	brew $BREW_CASK install $brew_install_args;
+}
 brew_update()  { brew $BREW_CASK upgrade; }
 brew_remove()  { brew $BREW_CASK uninstall "$@"; }
 brew_search()  { brew $BREW_CASK search "$@"; }
