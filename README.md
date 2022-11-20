@@ -1,4 +1,4 @@
-# piu (Platform Independant Updater)
+# piu (Platform Independent Updater)
 
 <img align="right" alt="Skunk Logo" src=".readme-assets/logo/skunk-logo.png">
 
