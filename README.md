@@ -137,7 +137,7 @@ Submit bug reports via GitHub's [Issue Tracker](https://github.com/keithieopia/p
 If you can make piu better or add support for a missing distro, please feel free to submit a pull request. There are no further requirements, contributing to `piu` is easy and also doesn't stink! 
 
 ## License
-Copyright &copy; 2017 - 2020 Timothy Keith, except where otherwise noted.
+Copyright &copy; 2017 - 2023 BeyondMeh, except where otherwise noted.
 
 Licensed under the [ISC license](https://github.com/keithieopia/piu/blob/master/LICENSE).
 
