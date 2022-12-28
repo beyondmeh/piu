@@ -61,7 +61,7 @@ their respective owners.*
 ## Installation
 
 ```console
-$ curl https://raw.githubusercontent.com/keithieopia/piu/master/piu -o piu && chmod +x piu && sudo mv piu /usr/local/bin
+$ curl https://raw.githubusercontent.com/beyondmeh/piu/master/piu -o piu && chmod +x piu && sudo mv piu /usr/local/bin
 ```
 Alternatively, if you have something like `~/bin` setup, just download
 `piu` there.
@@ -105,26 +105,13 @@ simply because the cache is usually in `/var`, where most users don't
 have write permission.
 
 
-## Feedback
-I would love your feedback! If you found `piu` useful, please send me
-[an email](mailto:timothykeith@gmail.com). For the privacy conscious,
-feel free to encrypt any messages using my
-[PGP key](https://gist.githubusercontent.com/keithieopia/434f3575ec1f020d6589a4c01dc0847e/raw/2e0749f2966ff501ee28797a926229c081f7e652/timothykeith.pub.asc):
-
-> 46E6 9F69 90C1 DE8C 9791 88EE 94A4 E2D4 6B32 AA11
-
-To import it into your keyring:
-```console
-$  curl https://gist.githubusercontent.com/keithieopia/434f3575ec1f020d6589a4c01dc0847e/raw/2e0749f2966ff501ee28797a926229c081f7e652/timothykeith.pub.asc | gpg --import -
-```
-
 ### Bug Reports
-Submit bug reports via GitHub's [Issue Tracker](https://github.com/keithieopia/piu/issues)
+Submit bug reports via GitHub's [Issue Tracker](https://github.com/beyondmeh/piu/issues)
 
 
 ### Contributing 
 
-`piu` makes package manage stink even less thanks to [all of its contributors](https://github.com/keithieopia/piu/graphs/contributors), both on GitHub and elsewhere. 
+`piu` makes package manage stink even less thanks to [all of its contributors](https://github.com/beyondmeh/piu/graphs/contributors), both on GitHub and elsewhere. 
 
 > The project's skunk logo was drawn by the very talented Kelly. It has
 > been digitized, cropped, and optimized for the web using
