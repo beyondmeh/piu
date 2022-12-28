@@ -1,8 +1,8 @@
 #!/bin/bash
 
 #Cross-platform package manager wrapper
-#https://github.com/keithieopia/piu
-#Copyright (c) 2017-2021 Timothy Keith
+#https://github.com/beyondmeh/piu
+#Copyright (c) 2017-2023 BeyondMeh
 #Licensed under the ISC license.
 
 __piutmp() {
