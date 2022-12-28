@@ -79,9 +79,9 @@ usage: $(basename "$0") OPTION [--cask] [PACKAGE]
    (nu) num-updates  : number of packages with updates
    (np) num-packages : number of installed packages
 
-https://github.com/keithieopia/piu
+https://github.com/beyondmeh/piu
 
-Copyright (c) 2017-2021 Timothy Keith
+Copyright (c) 2017-2023 BeyondMeh
 Licensed under the ISC license.
 HELP
 }
